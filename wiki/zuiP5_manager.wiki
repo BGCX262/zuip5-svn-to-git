@@ -1,0 +1,88 @@
+#labels Phase-QA
+======[Mainpage < Home] : [Documentations Docs] : [zuiP5_main zuiP5.main]======
+====zuilib.manager====
+
+_Übersicht_
+
+*[zuiP5_manager_DrawManager DrawManager]*: Fängt die Zeichnen-Anweisungen vom PApplet ab und gibt sie an alle mit ihm verlinkten Manager weiter (zB windowmanager).
+Ein Manager mit dem Typ "draw" sollte immer da sein und auch als erstes hinzugefügt werden.
+{{{
+String name = "simpleDraw";
+boolean enable = true;
+DrawManager drawman = new DrawManager(name,enable);
+}}}
+
+*[zuiP5_manager_simpleMouseManager simpleMouseManager]*: Fängt die Mausevents vom PApplet ab und gibt sie an alle mit ihm verlinkten Manager weiter (zb windowmanager);
+Ein Manager mit dem Typ "mouse" sollte mit als erstes hinzugefügt werden (aber nach einem Manager vom Typ "draw").
+{{{
+String name = "simpleMouse";
+boolean enable = true;
+simpleMouseManager mouseman = new simpleMouseManager(name,enable);
+}}}
+
+*[zuiP5_manager_extendedMouseManager extendedMouseManager]*: Fängt die Mausevents vom PApplet ab und gibt sie an alle mit ihm verlinkten Manager weiter (zb windowmanager), zudem fügt er noch ein paar Funktionen, für die genauere Mausabfrage hinzu;
+Ein Manager mit dem Typ "mouse" sollte mit als erstes hinzugefügt werden (aber nach einem Manager vom Typ "draw").
+{{{
+String name = "extendedMouse";
+boolean enable = true;
+extendedMouseManager mouseman = new extendedMouseManager(name,enable);
+}}}
+
+*[zuiP5_manager_KeyboardManager KeyboardManager]*: Fängt die Keyboardevents vom PApplet ab und gibt sie an alle mit ihm verlinkten Manager weiter (zb windowmanager);
+Ein Manager mit dem Typ "keyboard" sollte mit als erstes hinzugefügt werden.
+{{{
+String name = "simpleKeyboard";
+boolean enable = true;
+KeyboardManager keyman = new KeyboardManager(name,enable);
+}}}
+
+*[zuiP5_manager_simpleWindowManager simpleWindowManager]*: Er verwaltet alle Windows. Ihm können Windows übergeben werden, an die er auch Zeichnen-, Maus- und Keyboardevents weiterreicht.
+{{{
+String name = "simpleWindow";
+boolean enable = true;
+simpleWindowManager winman = new simpleWindowManager(name,enable);
+}}}
+
+*[zuiP5_manager_simplePFontManager simplePFontManager]*: Er beinhaltet alle geladen PFonts, die sich dann zB [zuiP5_components_Label Labels] von ihm erfragen können. Er sorgt dafür, das keine PFonts doppelt geladen werden.
+{{{
+String name = "simplePFont";
+boolean enable = true;
+simplePFontManager fontman = new simplePFontManager(name,enable);
+}}}
+
+*[zuiP5_manager_simplePImageManager simplePImageManager]*: Er beinhaltet alle geladen PImages, die dann von ihm erfragen werden können. Er sorgt dafür, das keine PImages doppelt geladen werden.
+{{{
+String name = "simplePImage";
+boolean enable = true;
+simplePImageManager imageman = new simplePImageManager(name,enable);
+}}}
+
+*[zuiP5_manager_simpleColorManager simpleColorManager]*: Er beinhaltet alle geladen [zuiP5_utils_ColorBundle Farben], die sich dann zB [zuiP5_utils_ColorBundle ColorBundles] von ihm erfragen können. Er sorgt dafür, das keine [zuiP5_utils_ColorBundle Farben] doppelt geladen werden.
+{{{
+String name = "simpleColor";
+boolean enable = true;
+simpleColorManager colorman = new simpleColorManager(name,enable);
+}}}
+
+*[zuiP5_manager_AnimationManager AnimationManager]*: Er verwaltet alle Animationen. Ihm können Animationen übergeben werden, an die er auch Zeichnenanweisungen weiterreicht.
+{{{
+String name = "simpleAnimation";
+boolean enable = true;
+AnimationManager animan = new AnimationManager(name,enable);
+}}}
+
+*[zuiP5_manager_WindowMoveTo WindowMoveTo]*: Eine Animation. Sie lässt ein ihr übergebenes Fenster zu einem übergeben Punkt bewegen.
+{{{
+String name = "simpleWindowMoveTo1";
+window win = ((simpleWindowManager) ui.get("simpleWindow")).get(0); //irgendein Fenster
+int frames = 24; //Anzahl der Zeichnendurchläufe, bis es am Ziel ist
+WindowMoveTo ani_wmt = new WindowMoveTo(name,win,frames);
+}}}
+
+*[zuiP5_manager_WindowZoom WindowZoom]*: Eine Animation. Sie zoomt auf eine angebene Stelle auf dem übergebenem Fenster und zentriert diese mittels der Animation [zuiP5_manager_WindowMoveTo WindowMoveTo].
+{{{
+String name = "simpleWindowZoom1";
+window win = ((simpleWindowManager) ui.get("simpleWindow")).get(0); //irgendein Fenster
+int frames = 24; //Anzahl der Zeichnendurchläufe, bis es am Ziel ist
+WindowMoveTo ani_wz = new WindowZoom(name,win,frames);
+}}}

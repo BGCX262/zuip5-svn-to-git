@@ -1,0 +1,31 @@
+#labels Phase-QA
+======[Mainpage < Home] : [Documentations Docs]======
+
+zuiP5 ist eine User Interface Bibliothek für Procesing 0148+.
+
+Sie gibt dem Entwickler die Möglichkeit seinem Sketch eine Benutzerebene einzubauen, die er nach seinen Ideen Gestalten und Umsetzten kann.
+
+Die Bibliothek besteht aus 5 Packeten.
+
+Kleine Einführung in die Bibliothek und deren Einsetzung und Benutzung sind im _[zuiP5_GettingStarted Getting Started]_.
+
+*core*:  [zuiP5_core_ZUI ZUI], [zuiP5_core_zuiBehavior zuiBehavior]
+
+*utils*:  [zuiP5_utils_ColorBundle ColorBundle], [zuiP5_utils_vector vector]
+
+*manager*:  [zuiP5_manager_DrawManager DrawManager], [zuiP5_manager_simpleMouseManager simpleMouseManager], [zuiP5_manager_extendedMouseManager extendedMouseManager], [zuiP5_manager_KeyboardManager KeyboardManager], [zuiP5_manager_simpleWindowManager simpleWindowManager], [zuiP5_manager_simplePFontManager simplePFontManager], [zuiP5_manager_simplePImageManager simplePImageManager], [zuiP5_manager_simpleColorManager simpleColorManager], [zuiP5_manager_AnimationManager AnimationManager], [zuiP5_manager_WindowMoveTo WindowMoveTo], [zuiP5_manager_WindowZoom WindowZoom]
+
+*windows*:  [zuiP5_windows_BackgroundWindow BackgroundWindow], [zuiP5_windows_CanvasWindow CanvasWindow], [zuiP5_windows_CircleWindow CircleWindow], [zuiP5_windows_RectWindow RectWindow], [zuiP5_windows_EyeWindow EyeWindow]
+
+*components*:  [zuiP5_components_List List], [zuiP5_components_Label Label], [zuiP5_components_TextButton TextButton], [zuiP5_components_RectButton RectButton], [zuiP5_components_CircleButton CircleButton], [zuiP5_components_CanvasButton CanvasButton], [zuiP5_components_Canvas Canvas], [zuiP5_components_CircleShape CircleShape], [zuiP5_components_RectShape RectShape], [zuiP5_components_RectCheckbox RectCheckbox], [zuiP5_components_CircleCheckbox CircleCheckbox], [zuiP5_components_RadiobuttonControler RadiobuttonControler], [zuiP5_components_Timer Timer], [zuiP5_components_RectHandle_Rect RectHandle_Rect], [zuiP5_components_RectHandle_Circle RectHandle_Circle], [zuiP5_components_CircleHandle_Rect CircleHandle_Rect], [zuiP5_components_CircleHandle_Circle CircleHandle_Circle], [zuiP5_components_Panel Panel], [zuiP5_components_LineInput LineInput], [zuiP5_components_RectScrollbar RectScrollbar]
+
+
+_*Packages*_:
+  * *[zuiP5_core core]*
+  * _[zuiP5_utils utils]_
+  * [zuiP5_manager manager]
+
+  * [zuiP5_windows windows]
+  * [zuiP5_components components]
+
+======[[zuiP5_all Alle]]======

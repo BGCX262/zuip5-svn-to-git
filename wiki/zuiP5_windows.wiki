@@ -1,0 +1,46 @@
+#labels Phase-QA
+======[Mainpage < Home] : [Documentations Docs] : [zuiP5_main zuiP5.main]======
+====zuilib.windows====
+_Übersicht_
+
+*[zuiP5_windows_BackgroundWindow BackgroundWindow]*: Ein Fenster, welches mit dem dem Mittelpunkt platziert wird. Es kann nicht bewegt werden.
+{{{
+String name = "BackgroundWindow1";
+float x = 0;
+float y = 0;
+float width = 320;
+float height = 240;
+BackgroundWindow bgwin = new BackgroundWindow(name,x,y,width,height);
+}}}
+
+*[zuiP5_windows_CanvasWindow CanvasWindow]*: Ein bewegbares Fenster, dessen Aussehen von einer Benutzerdefinierten Function gesetzt wird.
+{{{
+String name = "CanvasWindow1";
+float x = 0;
+float y = 0;
+CanvasWindow canwin = new CanvasWindow(name,x,y);
+}}}
+
+*[zuiP5_windows_CircleWindow CircleWindow]*: Ein rundes, bewegbares Fenster.
+{{{
+String name = "CircleWindow1";
+float x = 0;
+float y = 0;
+CircleWindow cwin = new CircleWindow(name,x,y);
+}}}
+
+*[zuiP5_windows_RectWindow RectWindow]*: Ein quadratisches, bewegebares Fenster.
+{{{
+String name = "RectWindow1";
+float x = 0;
+float y = 0;
+RectWindow rwin = new RectWindow(name,x,y);
+}}}
+
+*[zuiP5_windows_EyeWindow EyeWindow]*: Ein rundes, bewegbares Fenster, dessen Verschiebungsfläche sich nachder Maus ausrichtet.
+{{{
+String name = "EyeWindow1";
+float x = 0;
+float y = 0;
+EyeWindow ewin = new EyeWindow(name,x,y);
+}}}

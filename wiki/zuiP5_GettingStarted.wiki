@@ -1,0 +1,165 @@
+#labels Phase-QA,Phase-Deploy
+======[Mainpage < Home] : [Documentations Docs] : [zuiP5_main zuiP5.main]======
+====_Getting Started_====
+
+Die Bibliothek benötigt, da sie für größere Pojekte gedacht ist ein etwas größeren aufwand, um sie zum laufen zu bekommen. Dazu ein paar kurze Worte zum Aufbau: Der eigendlich Hauptkern ist die [zuiP5_core_ZUI ZUI]-Klasse und deren Aufnahme der Manager, die die eigentlich Arbeit leisten. Um zum Beispiel ein kleinen Sketch mit einem Fenster zu erstellen sind daher schon mal alleine 4 Manager nötig, die initialisiert werden müssen beim setup().
+
+Der Manager mit der meisten Arbeit, der [zuiP5_manager_simpleWindowManager WindowManager] ist auf drei weitere Manager verlinkt, d.h. er benötigt ihre Dienste. Das besteht darin, das die verlinkten Manager Funktionen aufrufen bei allen Managern, die mit ihnen verlinkt sind. Das ist nötig, damit eine Austauschbarkeit der verschiedenen Angebote gewährleistet ist. Die drei benötigten Manager sind in ganzen der [zuiP5_manager_DrawManager DrawManager], der für die Zeichnen-Befehle zuständig ist, d.h. er sagt an, wann gezeichtet werden soll, der [zuiP5_manager_simpleMouseManager MouseManager], der die Mausfunktionen weitergibt und die bei dem die Mausposition (sie kann leicht modifiziert werden, daher der Aufwand) abgefragt werden kann und zu guter letzt dem [zuiP5_manager_KeyboardManager KeyboardManager], der die Tastenanschläge weiterreicht.
+
+Eine einfache Implementation sähe dann wie folgt aus:
+{{{
+import zuilib.core.*;    // Import der Hauptklasse
+import zuilib.manager.*; // Import der verschieden Managerklassen
+
+ZUI ui; // Als 'globale' Variable definieren (PApplet internweit)
+
+void setup() {
+  size(320,240);
+  smooth();
+
+  ui = ZUI(this); // Initialisierung der Haupklasse und Übergabe dieses Processing Applets
+
+  ui.addManager( new DrawManager("simpleDraw",true) ); // Initialisierung des DrawManagers
+  ui.addManager( new simpleMouseManager("simpleMouse",true) ); // Initialisierung des MouseManagers
+  ui.addManager( new KeyboardManager("simpleKeyboard",true) ); // Initialisierung des KeyboardManagers
+}
+
+void draw() {
+  background(204);
+}
+
+}}}
+
+Damit wurde die Bibliothek erfolgreich eingebaut. Jedoch fehlen noch gänzlich der anzuzeigene Inhalt, wie zB ein Fenster. Das übernimmt der [zuiP5_manager_simpleWindowManager WindowManager]:
+{{{
+import zuilib.core.*;
+import zuilib.manager.*;
+import zuilib.windows.*; // Import der Fensterklassen
+
+ZUI ui;
+
+void setup() {
+  size(320,240);
+  smooth();
+
+  ui = ZUI(this);
+
+  ui.addManager( new DrawManager("simpleDraw",true) );
+  ui.addManager( new simpleMouseManager("simpleMouse",true) );
+  ui.addManager( new KeyboardManager("simpleKeyboard",true) );
+
+  simpleWindowManager winman = new simpleWindowManager("simpleWidow",true); // Initialisierung des WindowManagers
+  ui.addManager( winman ); // Hinzufügen und einrichten des WindowManagers im ZUI
+
+  RectWindow rectwin = new RectWindow("testRect", -100, -50); // Initialisierung es Rechteckigen Fensters
+  winman.addWindow( rectwin ); // Hinzufügen und einrichten des Fensters 
+  rectwin.dimension.setDim(200, 100); // Setzten der Größe auf 200x100
+  rectwin.area.set(1, 1, 10, 99); // Setzen der Tragfläche auf Position 1,1 mit der Größe 10x99
+  rectwin.Color.set(color(160), color(200), color(80), color(255,50,50), color(200), color(80));
+    // Setzen der Farben des Fensters (Vordergrund, Hintergrund, Randfarbe, gehoverter Vordergrund, gehoverter Hintergrund, gehoverte Randfarbe)
+  rectwin.setOpaq(100); // Setzten der Allgemeinen Fenster-Transparenz auch 100
+
+}
+
+void draw() {
+  background(204);
+}
+
+}}}
+
+Der Inhalt des Fensters fehlt auch noch. Dieser Part wird von den [zuiP5_components Komponenten] übernommen. In diesem Beispiel soll ein Roter Punkt und ein kleiner Schriftzug zu sehen sein. Dazu brauchen wir ein [zuiP5_components_CircleShape CricleShape] und ein [zuiP5_components_Label Label].
+
+Das sähe dann wir folgt aus:
+{{{
+import zuilib.core.*;
+import zuilib.manager.*;
+import zuilib.windows.*;
+import zuilib.components.*; // Import der Komponentenklassen
+
+ZUI ui;
+
+void setup() {
+  size(320,240);
+  smooth();
+
+  ui = ZUI(this);
+
+  ui.addManager( new DrawManager("simpleDraw",true) );
+  ui.addManager( new simpleMouseManager("simpleMouse",true) );
+  ui.addManager( new KeyboardManager("simpleKeyboard",true) );
+
+  simpleWindowManager winman = new simpleWindowManager("simpleWidow",true);
+  ui.addManager( winman );
+
+  RectWindow rectwin = new RectWindow("testRect", -100, -50);
+  winman.addWindow( rectwin );
+  rectwin.dimension.setDim(200, 100);
+  rectwin.area.set(1, 1, 10, 99);
+  rectwin.Color.set(color(160), color(200), color(80), color(255,50,50), color(200), color(80));
+  rectwin.setOpaq(100);
+
+  rectwin.addComponent( new CircleShape("CircleShape1",50,50,45,color(200,0,0,200),color(100,0,0,100)) ); // Hinzufügen des roten Kreises
+  rectwin.addComponent( new zuilib.components.Label("Label",77,45,"Hello World!",10) ); // Hinzufügen des Schriftzuges
+
+}
+
+void draw() {
+  background(204);
+}
+
+}}}
+
+Jetzt fehlt nur noch eine kleine Animation, um das ganze etwas abzurunden. Da das nur eine ganz simple Animation ist benötigen auch nicht den [zuiP5_manager_AnimationManager AnimationManager]. Es wird ein Timer eingebaut, der dann die allgemeine Rotation stetig ändert. Die Lösung ist nur eine von vielen. Um sowas einzubauen gibt es auch die Möglickeit, das man sich eine eigene Animation dafür schreibt und dann diese dem [zuiP5_manager_AnimationManager AnimationManager] überlässt. Oder man Erstellt ein neues [zuiP5_core_zuiBehavior Verhalten], wenn man zB mehrere animierte Objekte haben will, aber die alle andere Parameter benutzen sollen.
+
+Dies ist, wie ich finde für diesen Zweck die einfachse und schnellse Möglichkeit:
+{{{
+import zuilib.core.*;
+import zuilib.manager.*;
+import zuilib.windows.*;
+import zuilib.components.*;
+
+ZUI ui;
+
+void setup() {
+  size(320,240);
+  smooth();
+
+  ui = ZUI(this);
+
+  ui.addManager( new DrawManager("simpleDraw",true) );
+  ui.addManager( new simpleMouseManager("simpleMouse",true) );
+  ui.addManager( new KeyboardManager("simpleKeyboard",true) );
+
+  simpleWindowManager winman = new simpleWindowManager("simpleWidow",true);
+  ui.addManager( winman );
+
+  RectWindow rectwin = new RectWindow("testRect", -100, -50);
+  winman.addWindow( rectwin );
+  rectwin.dimension.setDim(200, 100);
+  rectwin.area.set(1, 1, 10, 99);
+  rectwin.Color.set(color(160), color(200), color(80), color(255,50,50), color(200), color(80));
+  rectwin.setOpaq(100);
+
+  rectwin.addComponent( new CircleShape("CircleShape1",50,50,45,color(200,0,0,200),color(100,0,0,100)) );
+  rectwin.addComponent( new zuilib.components.Label("Label",77,45,"Hello World!",10) );
+
+  zuilib.components.Timer timer = new zuilib.components.Timer("Timer1",1,true); // Erstellen des Timers mit einem Interval von einem Frame ( ein Aufruf von draw() )
+  rectwin.addComponent(timer); // Hinzufügen des Timers zum Fenster
+  timer.setFunction("onTimer", "onTimer1"); // Setzten der benutzerdefinierten Funktion onTimer1 für das Timerevent
+
+}
+
+void draw() {
+  background(204);
+}
+
+void onTimer1() { // Erstellen einer benutzerdefinierten Funktion für das Timerevent
+  simpleWindowManager winman = (simpleWindowManager) ui.get("simpleWindow"); // Holen des WindowManagers
+  winman.rotation.set(winman.rotation.get() + 0.01f); // Setzten der allgemeinen Rotation um 0.01 pro Aufruf (in diesem Falle ein Frame)
+}
+
+}}}
+
+[http://zuip5.googlecode.com/svn/images/zuilib_helloWorld1.png]
+
+====== _So sieht das Resultat aus. _ [[http://zuip5.googlecode.com/svn/applets/zuilib_helloWorld/index.html Live]] ======

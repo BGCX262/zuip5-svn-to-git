@@ -1,0 +1,9 @@
+#labels Phase-QA
+======[Mainpage < Home] : [Documentations Docs] : [zuiP5_main zuiP5.main] : [zuiP5_utils zuilib.utils]======
+====zuilib.utils.[zuiP5_utils_ColorBundle ColorBundle]====
+
+_infos über ColorBundle_
+
+=====Methoden=====
+
+_hier müssen noch die benutzungsrelefanten methoden von ColorBundle hin_

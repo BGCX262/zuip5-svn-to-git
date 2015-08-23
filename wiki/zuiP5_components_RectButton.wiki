@@ -1,0 +1,9 @@
+#labels Phase-QA
+======[Mainpage < Home] : [Documentations Docs] : [zuiP5_main zuiP5.main] : [zuiP5_components zuilib.components]======
+====zuilib.components.[zuiP5_components_RectButton RectButton]====
+
+_infos über *Component_
+
+=====Methoden=====
+
+_hier müssen noch die benutzungsrelefanten methoden von *Component hin_

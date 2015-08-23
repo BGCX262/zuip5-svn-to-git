@@ -1,0 +1,17 @@
+#labels Phase-QA
+======[Mainpage < Home] : [Documentations Docs] : [zuiP5_main zuiP5.main]======
+====zuilib.core====
+Besteht aus der Hauptklasse [zuiP5_core_ZUI ZUI] und weiteren, jedoch nur für das Modifizieren relevanten, Klassen (Diese können im [Javadocs Javadoc] nachgeschlagen werden).
+
+*[zuiP5_core_ZUI ZUI]*: Wird in das PApplet eingebaut.
+{{{
+int debul = 5; //nicht zu viel und nicht zu wenig infos
+PApplet thispapplet = this;
+ZUI ui = new ZUI(thispapplet,debug);
+}}}
+
+*[zuiP5_core_zuiBehavior zuiBehavior]*: Wird einem Objekt übergeben, damit dies durch eventuelle Parameter benutzerdefiniert modifiziert wird.
+{{{
+String name = "emptyBehavior1";
+zuiBehavior bhvr = new zuiBehavior(name);
+}}}

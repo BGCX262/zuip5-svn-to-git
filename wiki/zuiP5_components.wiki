@@ -1,0 +1,224 @@
+#labels Phase-QA
+======[Mainpage < Home] : [Documentations Docs] : [zuiP5_main zuiP5.main]======
+====zuilib.components====
+_Übersicht_
+
+*[zuiP5_components_List List]*: Eine 2 dimensionale Liste, dessen Aussehen der Zellen von einer benutzerdefinierten Function gesetzt wird.
+{{{
+String name = "List1";
+float x = 0;
+float y = 0;
+float width = 10;
+float height = 10;
+List L = new List(name,x,y,width,height);
+}}}
+
+*[zuiP5_components_Label Label]*: Zeigt Text an. Der Font vom Text holt sich Label vom [zuiP5_manager_simplePFontManager fontmanager].
+{{{
+String name = "Label1";
+float x = 0;
+float y = 0;
+String text = "Hello World!";
+float fontsize = 10; //Schriftgröße
+zuilib.components.Label label1 = new zuilib.components.Label(name,x,y,text,fontsize);
+
+name = "Label2";
+y = 12;
+String fontname = "Verdana-48.vlw"; // Der fontmanager läd diesen Font aus dem data-Ornder
+zuilib.components.Label label2 = new zuilib.components.Label(name,x,y,text,fontname,fontsize);
+}}}
+_*Achtung:* Label ist nochmal woanders definiert, deshalb immer mit *zuilib.components.Label* aufrufen (in Eclipse ist das egal)._
+
+*[zuiP5_components_TextButton TextButton]*: Ein Button, der ein Label für die Anzeige benutzt.
+{{{
+String name = "TextButton1";
+float x = 0;
+float y = 0;
+String text = "ClickMe";
+float fontsize = 10; //Schriftgröße
+TextButton tbut = new TextButton(name,x,y,text,fontsize);
+}}}
+
+*[zuiP5_components_RectButton RectButton]*: Ein Rechteckiger Button.
+{{{
+String name = "RectButton1";
+float x = 0;
+float y = 0;
+RectButton rbut = new RectButton(name,x,y);
+}}}
+
+*[zuiP5_components_CircleButton CircleButton]*: Ein Runder Button.
+{{{
+String name = "CircleButton1";
+float x = 0;
+float y = 0;
+CircleButton cbut = new CircleButton(name,x,y);
+}}}
+
+*[zuiP5_components_CanvasButton CanvasButton]*: Ein rechteckiger Button, dessen Aussehen von einer benutzerdefinierten Function gesetzt wird.
+{{{
+String name = "CanvasButton1";
+float x = 0;
+float y = 0;
+float width = 10;
+float height = 10;
+CanvasButton canbut = new CanvasButton(name,x,y,width,height);
+}}}
+
+*[zuiP5_components_Canvas Canvas]*: Eine Fläche, auf die mit hilfe einer benutzerdefinierten Function gezeichnet werden kann.
+{{{
+String name = "Canvas1";
+float x = 0;
+float y = 0;
+float width = 10;
+float height = 10;
+Canvas can = new Canvas(name,x,y,width,height);
+}}}
+
+*[zuiP5_components_CircleShape CircleShape]*: Eine runde Fläche.
+{{{
+String name = "CircleShape1";
+float x = 0;
+float y = 0;
+float size = 10; //Durchmesser
+CircleShape cshape1 = new CircleShape(name,x,y,size);
+
+name = "CircleShape2";
+size = 30;
+int shape_color = color(200,0,0,200);
+int border_color = color(100,0,0,100);
+CircleShape cshape2 = new CircleShape(name,x,y,size,shape_color,border_color);
+}}}
+
+*[zuiP5_components_RectShape RectShape]*: Eine rechteckige Fläche.
+{{{
+String name = "RectShape1";
+float x = 0;
+float y = 0;
+float width = 10;
+float height = 10;
+RectShape rshape1 = new RectShape(name,x,y,size);
+
+name = "RectShape2";
+width = 30;
+height = 30;
+int shape_color = color(200,0,0,200);
+int border_color = color(100,0,0,100);
+RectShape rshape2 = new RectShape(name,x,y,size,shape_color,border_color);
+}}}
+
+*[zuiP5_components_RectCheckbox RectCheckbox]*: Eine rechteckige Fläche zum klicken mit Text.
+{{{
+String name = "RectCheckbox1";
+float x = 0;
+float y = 0;
+String text = "Pizza?";
+float fontsize = 10; //Schriftgröße
+RectCheckbox rcb = new RectCheckbox(name,x,y,text,fontsize);
+}}}
+
+*[zuiP5_components_CircleCheckbox CircleCheckbox]*: Eine runde Fläche zum klicken mit Text.
+{{{
+String name = "CircleCheckbox1";
+float x = 0;
+float y = 0;
+String text = "Pizza?";
+float fontsize = 10; //Schriftgröße
+CircleCheckbox ccb = new CircleCheckbox(name,x,y,text,fontsize);
+}}}
+
+*[zuiP5_components_RadiobuttonControler RadiobuttonControler]*: Mit diesem Controler können bereist hinzugefügte Checkboxes verlinkt werden. Unter allen mit dem Controler verlinkten Checkboxes kann nur eines gecheckt sein ('Häckchen' gesetzt).
+{{{
+String name = "RadiobuttonControler1";
+boolean enable = true;
+RadiobuttonControler rbc = new RadiobuttonControler(name,enable);
+}}}
+
+*[zuiP5_components_Timer Timer]*: Ein Controler, der in einem angegebenen Zeitinterval eine benutzerdefinierte Function auslöst.
+{{{
+String name = "Timer1";
+boolean enable = true;
+zuilib.components.Timer timer1 = new zuilib.components.Timer
+}}}
+_*Achtung:* Timer ist nochmal woanders definiert, deshalb immer mit *zuilib.components.Timer* aufrufen (in Eclipse ist das egal)._
+
+*[zuiP5_components_RectHandle_Rect RectHandle_Rect]*: Ein rechteckiger Schieberegler mit rechteckigem Regler. Der Ausrichtung, ob horizontal oder vertikal wird automatisch bestimmt.
+{{{
+String name = "RechtHandle_Rect1";
+float x = 0;
+float y = 0;
+float width = 40;
+float height = 10;
+float value = 100; //Gibt den Wert an, dh bei 2 ist der Wert bei 50% ein 1.
+RectHandle_Rect rhr = new RectHandle_Rect(name,x,y,width,height,value);
+}}}
+
+*[zuiP5_components_RectHandle_Circle RectHandle_Circle]*: Ein rechteckiger Schieberegler mit rundem Regler. Der Ausrichtung, ob horizontal oder vertikal wird automatisch bestimmt.
+{{{
+String name = "RechtHandle_Circle1";
+float x = 0;
+float y = 0;
+float width = 40;
+float height = 10;
+float value = 100; //Gibt den Wert an, dh bei 2 ist der Wert bei 50% ein 1.
+RectHandle_Circle rhc = new RectHandle_Circle(name,x,y,width,height,value);
+}}}
+
+*[zuiP5_components_CircleHandle_Rect CircleHandle_Rect]*: Ein runder Schieberegler mit rechteckigem Regler.
+{{{
+String name = "CircleHandle_Rect1";
+float x = 0;
+float y = 0;
+float size = 40; // Ringdurchmesser
+float box_size = 10; // Reglerdurchmesser
+float value = 100; //Gibt den Wert an, dh bei 2 ist der Wert bei 50% ein 1.
+CircleHandle_Rect chr = new CircleHandle_Rect(name,x,y,width,height,value);
+}}}
+
+*[zuiP5_components_CircleHandle_Circle CircleHandle_Circle]*: Ein runder Schieberegler mit rundem Regler.
+{{{
+String name = "CircleHandle_Circle1";
+float x = 0;
+float y = 0;
+float size = 40; // Ringdurchmesser
+float box_size = 10; // Reglerdurchmesser
+float value = 100; //Gibt den Wert an, dh bei 2 ist der Wert bei 50% ein 1.
+CircleHandle_Circle chr = new CircleHandle_Circle(name,x,y,width,height,value);
+}}}
+
+*[zuiP5_components_Panel Panel]*: Eine Komponente, die weiter, andere Komponenten aufnehmen kann, quasi ein Fenster als Komponente.
+{{{
+String name = "Panel1";
+float x = 0;
+float y = 0;
+float width = 40;
+float height = 40;
+String renderer = JAVA2D; // Der Renderer, der auch bei PApplet.size(w,h,r) angegeben werden muss.
+Panel panel1 = new Panel(name,x,y,width,height,renderer);
+
+name = "Panel2";
+x = 42;
+Panel panel1 = new Panel(name,x,y,width,height); // Default renderer: JAVA2D
+}}}
+
+*[zuiP5_components_LineInput LineInput]*: Ein einliniges Eingabefeld.
+{{{
+String name = "LineInput1";
+float x = 0;
+float y = 0;
+String text = "EditMe";
+float width = 100;
+float fontsize = 10; //Schriftgröße
+LineInput li = new LineInput(name,x,y,text,width,fontsize);
+}}}
+
+*[zuiP5_components_RectScrollbar RectScrollbar]*: Eine rechteckige Scrollleiste.
+{{{
+String name = "RectScrollbar1";
+float x = 0;
+float y = 0;
+float width = 10;
+float height = 60;
+float value = 100; //Gibt den Wert an, dh bei 2 ist der Wert bei 50% ein 1.
+RectScrollbar rsb = new RectScrollbar(name,x,y,width,height,value);
+}}}

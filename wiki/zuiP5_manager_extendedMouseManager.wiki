@@ -1,0 +1,8 @@
+======[Mainpage < Home] : [Documentations Docs] : [zuiP5_main zuiP5.main] : [zuiP5_manager zuilib.manager]======
+====zuilib.manager.[zuiP5_manager_extendedMouseManager extendedMouseManager]====
+
+_infos über *Manager_
+
+=====Methoden=====
+
+_hier müssen noch die benutzungsrelefanten methoden von *Manager hin_

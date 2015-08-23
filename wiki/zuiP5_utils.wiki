@@ -1,0 +1,23 @@
+#labels Phase-QA
+======[Mainpage < Home] : [Documentations Docs] : [zuiP5_main zuiP5.main]======
+====zuilib.utils====
+Die beinhalteten Klassen werden hauptsächlichvon der Bibliothek selber benutzt, jedoch können die Klassen [zuiP5_utils_vector vector] und [zuiP5_utils_ColorBundle ColorBundle] auch für den Gebrauch im Sketch benutzt werden.
+
+*[zuiP5_utils_vector vector]*: Wird hauptsächlich zu Positionierung benutzt.
+{{{
+float x = width/2;
+float y = height/2;
+vector pos = new vector(x, y);
+}}}
+
+*[zuiP5_utils_ColorBundle ColorBundle]*: Wird zum Speichern von Farbschemen benutzt.
+Kann dazu verwendet werden verschiedenen Objekten ein Farbschema zu geben.
+{{{
+color foreground = color(160);
+color background = color(200);
+color border     = color(80);
+color highlighted_foreground = color(255,50,50);
+color highlighted_background = color(200);
+color highlighted_border     = color(80);
+ColorBundle color_complete = new ColorBundle(foreground, background, border, highlighted_foreground, highlighted_background, highlighted_border);
+}}}
